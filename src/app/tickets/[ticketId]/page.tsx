@@ -14,7 +14,14 @@ const TickPage = async (props: TickPageProps) => {
         return <h1 className='text-xl'>Ticket not found</h1>;
     }
 
-    return <h1 className='text-xl'>Tick Page {params.ticketId}</h1>;
+    return (
+        <div>
+            <h2 className='text-lg'>
+                {ticket.title} Page {params.ticketId}
+            </h2>
+            <p>{ticket.content}</p>
+        </div>
+    );
 };
 
 export default TickPage;
