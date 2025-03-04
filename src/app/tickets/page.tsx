@@ -1,5 +1,7 @@
 import clsx from 'clsx';
+import { LucideCheck, LucideFileText, LucidePencil } from 'lucide-react';
 import Link from 'next/link';
+import { Heading } from '@/components/heading';
 import {
     Card,
     CardContent,
@@ -7,11 +9,8 @@ import {
     CardHeader,
     CardTitle
 } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { initTickets } from '@/data';
 import { ticketPath } from '@/paths';
-import { LucideCheck, LucideFileText, LucidePencil } from 'lucide-react';
-import { Heading } from '@/components/heading';
 
 const TICK_ICON = {
     OPEN: <LucideFileText />,
