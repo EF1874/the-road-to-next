@@ -31,7 +31,7 @@ export default function RootLayout({
                 <Header />
                 <main
                     className='
-                        main-h-screen flex-1
+                        h-screen flex-1
                         overflow-y-auto overflow-x-hidden
                         py-24 px-8
                         bg-secondary/20

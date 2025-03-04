@@ -1,4 +1,8 @@
+import { Placeholder } from '@/components/placeholder';
+import { Button } from '@/components/ui/button';
 import { initTickets } from '@/data';
+import { ticketsPath } from '@/paths';
+import Link from 'next/link';
 
 type TickPageProps = {
     params: Promise<{
@@ -11,7 +15,16 @@ const TickPage = async (props: TickPageProps) => {
     const ticket = initTickets.find(ticket => ticket.id === params.ticketId);
 
     if (!ticket) {
-        return <h1 className='text-xl'>Ticket not found</h1>;
+        return (
+            <Placeholder
+                label='Ticket not found'
+                button={
+                    <Button asChild variant='outline'>
+                        <Link href={ticketsPath}>Go To Tickets</Link>
+                    </Button>
+                }
+            ></Placeholder>
+        );
     }
 
     return (
