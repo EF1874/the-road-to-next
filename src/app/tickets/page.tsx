@@ -10,11 +10,12 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { initTickets } from '@/data';
 import { ticketPath } from '@/paths';
+import { LucideCheck, LucideFileText, LucidePencil } from 'lucide-react';
 
 const TICK_ICON = {
-    OPEN: '🔓',
-    IN_PROGRESS: '⏳',
-    DONE: '✅'
+    OPEN: <LucideFileText />,
+    IN_PROGRESS: <LucidePencil />,
+    DONE: <LucideCheck />
 };
 
 const TicketsPage = () => {
@@ -34,7 +35,7 @@ const TicketsPage = () => {
                 {initTickets.map(ticket => (
                     <Card key={ticket.id} className='w-full max-w-[420px]'>
                         <CardHeader>
-                            <CardTitle className='flex gap-x-2'>
+                            <CardTitle className='flex items-center gap-x-2'>
                                 <span>{TICK_ICON[ticket.status]}</span>
                                 <span className='truncate'>{ticket.title}</span>
                             </CardTitle>
