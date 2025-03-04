@@ -11,6 +11,7 @@ import { Separator } from '@/components/ui/separator';
 import { initTickets } from '@/data';
 import { ticketPath } from '@/paths';
 import { LucideCheck, LucideFileText, LucidePencil } from 'lucide-react';
+import { Heading } from '@/components/heading';
 
 const TICK_ICON = {
     OPEN: <LucideFileText />,
@@ -20,16 +21,11 @@ const TICK_ICON = {
 
 const TicketsPage = () => {
     return (
-        <div className='flex flex-col gap-y-8'>
-            <div>
-                <h2 className='text-3xl font-bold tracking-tight'>
-                    Tickets Page
-                </h2>
-                <p className='text-sm text-muted-foreground'>
-                    All your tickets in one place
-                </p>
-            </div>
-            <Separator />
+        <div className='flex1 flex flex-col gap-y-8'>
+            <Heading
+                title='Tickets'
+                description='All your tickets in one place'
+            />
 
             <div className='flex flex-1 flex-col items-center gap-y-4 animate-fade-in-from-top'>
                 {initTickets.map(ticket => (
