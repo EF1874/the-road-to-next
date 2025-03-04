@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import { Placeholder } from '@/components/placeholder';
 import { Button } from '@/components/ui/button';
 import { initTickets } from '@/data';
 import { ticketsPath } from '@/paths';
-import Link from 'next/link';
+import { TicketItem } from '@/feature/ticket/components/ticket-item';
 
 type TickPageProps = {
     params: Promise<{
@@ -28,11 +29,8 @@ const TickPage = async (props: TickPageProps) => {
     }
 
     return (
-        <div>
-            <h2 className='text-lg'>
-                {ticket.title} Page {params.ticketId}
-            </h2>
-            <p>{ticket.content}</p>
+        <div className='flex justify-center animate-fade-in-from-top'>
+            <TicketItem isDetail ticket={ticket} />
         </div>
     );
 };
