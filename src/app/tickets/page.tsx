@@ -1,5 +1,13 @@
 import clsx from 'clsx';
 import Link from 'next/link';
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 import { initTickets } from '@/data';
 import { ticketPath } from '@/paths';
 
@@ -20,32 +28,38 @@ const TicketsPage = () => {
                     All your tickets in one place
                 </p>
             </div>
+            <Separator />
 
             <div className='flex flex-1 flex-col items-center gap-y-4 animate-fade-in-from-top'>
                 {initTickets.map(ticket => (
-                    <div
-                        key={ticket.id}
-                        className='w-full max-w-[420px] p-4 border border-slate-100 rounded'
-                    >
-                        <h3 className='text-lg font-semibold truncate'>
-                            {ticket.title}
-                            {TICK_ICON[ticket.status]}
-                        </h3>
-                        <p
-                            className={clsx('text-sm text-slate-500 truncate', {
-                                'line-through': ticket.status === 'DONE'
-                            })}
-                        >
-                            {ticket.content}
-                        </p>
-
-                        <Link
-                            href={ticketPath(ticket.id)}
-                            className='text-sm underline'
-                        >
-                            View
-                        </Link>
-                    </div>
+                    <Card key={ticket.id} className='w-full max-w-[420px]'>
+                        <CardHeader>
+                            <CardTitle className='flex gap-x-2'>
+                                <span>{TICK_ICON[ticket.status]}</span>
+                                <span className='truncate'>{ticket.title}</span>
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <span
+                                className={clsx(
+                                    'line-clamp-3 whitespace-break-spaces',
+                                    {
+                                        'line-through': ticket.status === 'DONE'
+                                    }
+                                )}
+                            >
+                                {ticket.content}
+                            </span>
+                        </CardContent>
+                        <CardFooter>
+                            <Link
+                                href={ticketPath(ticket.id)}
+                                className='text-sm underline'
+                            >
+                                View
+                            </Link>
+                        </CardFooter>
+                    </Card>
                 ))}
             </div>
         </div>
