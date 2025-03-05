@@ -1,9 +1,6 @@
-import Link from 'next/link';
-import { Placeholder } from '@/components/placeholder';
-import { Button } from '@/components/ui/button';
 import { TicketItem } from '@/feature/ticket/components/ticket-item';
-import { ticketsPath } from '@/paths';
 import { getTicket } from '@/feature/ticket/queries/get-ticket';
+import { notFound } from 'next/navigation';
 
 type TickPageProps = {
     params: Promise<{
@@ -16,16 +13,7 @@ const TickPage = async (props: TickPageProps) => {
     const ticket = await getTicket(params.ticketId);
 
     if (!ticket) {
-        return (
-            <Placeholder
-                label='Ticket not found'
-                button={
-                    <Button asChild variant='outline'>
-                        <Link href={ticketsPath}>Go To Tickets</Link>
-                    </Button>
-                }
-            ></Placeholder>
-        );
+        return notFound();
     }
 
     return (
