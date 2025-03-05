@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Placeholder } from '@/components/placeholder';
 import { Button } from '@/components/ui/button';
 import { initTickets } from '@/data';
-import { ticketsPath } from '@/paths';
 import { TicketItem } from '@/feature/ticket/components/ticket-item';
+import { ticketsPath } from '@/paths';
 
 type TickPageProps = {
     params: Promise<{
