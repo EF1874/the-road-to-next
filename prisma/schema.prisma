@@ -14,7 +14,7 @@ datasource db {
     directUrl = env("DIRECT_URL")
 }
 
-model ticket {
+model Ticket {
     id        String       @id @default(cuid())
     createdAt DateTime     @default(now())
     updatedAt DateTime     @updatedAt
