@@ -1,6 +1,6 @@
+import { notFound } from 'next/navigation';
 import { TicketItem } from '@/feature/ticket/components/ticket-item';
 import { getTicket } from '@/feature/ticket/queries/get-ticket';
-import { notFound } from 'next/navigation';
 
 type TickPageProps = {
     params: Promise<{
