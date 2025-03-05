@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { Placeholder } from '@/components/placeholder';
 import { Button } from '@/components/ui/button';
-import { initTickets } from '@/data';
 import { TicketItem } from '@/feature/ticket/components/ticket-item';
 import { ticketsPath } from '@/paths';
+import { getTicket } from '@/feature/ticket/queries/get-ticket';
 
 type TickPageProps = {
     params: Promise<{
@@ -13,7 +13,7 @@ type TickPageProps = {
 
 const TickPage = async (props: TickPageProps) => {
     const params = await props.params;
-    const ticket = initTickets.find(ticket => ticket.id === params.ticketId);
+    const ticket = await getTicket(params.ticketId);
 
     if (!ticket) {
         return (
