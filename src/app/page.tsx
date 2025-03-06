@@ -8,7 +8,7 @@ const HomePage = () => {
             <Heading title='Home' description='Your home place to start' />
 
             <div className='flex flex-1 flex-col items-center'>
-                <Link href={ticketsPath} className=' underline'>
+                <Link href={ticketsPath()} className=' underline'>
                     Go To Tickets
                 </Link>
             </div>

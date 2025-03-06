@@ -9,7 +9,7 @@ export default function NotFound() {
             label='Ticket not found'
             button={
                 <Button asChild variant='outline'>
-                    <Link href={ticketsPath}>Go To Tickets</Link>
+                    <Link href={ticketsPath()}>Go To Tickets</Link>
                 </Button>
             }
         ></Placeholder>

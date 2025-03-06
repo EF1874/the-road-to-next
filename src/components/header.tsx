@@ -28,7 +28,7 @@ export const Header = () => {
                 <li className="flex align-middle justify-center gap-x-1">
                     <ThemeSwitcher />
                     <Link
-                        href={ticketsPath}
+                        href={ticketsPath()}
                         className={buttonVariants({
                             variant: 'outline'
                         })}
