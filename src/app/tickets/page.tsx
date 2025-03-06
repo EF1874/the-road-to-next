@@ -4,6 +4,15 @@ import { Heading } from '@/components/heading';
 import { Placeholder } from '@/components/placeholder';
 import { Spinner } from '@/components/spinner';
 import { TicketList } from '@/feature/ticket/components/ticket-list';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card';
+import { TicketCreateForm } from '@/feature/ticket/components/ticket-create-form';
+import { CardCompact } from '@/components/card-compact';
 
 // 强制页面为动态
 // export const dynamic = "force-dynamic";
@@ -17,6 +26,12 @@ const TicketsPage = () => {
             <Heading
                 title='Tickets'
                 description='All your tickets in one place'
+            />
+            <CardCompact
+                title='Create Ticket'
+                description='A new ticket will be created'
+                content={<TicketCreateForm />}
+                className='w-full max-w-[420px] self-center'
             />
 
             <ErrorBoundary
