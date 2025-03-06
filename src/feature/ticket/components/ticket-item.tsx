@@ -1,11 +1,15 @@
 import { Ticket } from '@prisma/client';
 import clsx from 'clsx';
-import { LucideSquareArrowOutUpRight, LucideTrash } from 'lucide-react';
+import {
+    LucidePencil,
+    LucideSquareArrowOutUpRight,
+    LucideTrash
+} from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { TICK_ICON } from '@/feature/constants';
-import { ticketPath } from '@/paths';
+import { ticketEditPath, ticketPath } from '@/paths';
 import { deleteTicket } from '../actions/delete-ticket';
 
 type TicketItemProps = {
@@ -16,8 +20,24 @@ type TicketItemProps = {
 const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
     const DetailButton = (
         <Button asChild size='icon' variant='outline'>
-            <Link prefetch href={ticketPath(ticket.id)} className='text-sm underline'>
+            <Link
+                prefetch
+                href={ticketPath(ticket.id)}
+                className='text-sm underline'
+            >
                 <LucideSquareArrowOutUpRight className='w-4 h-4' />
+            </Link>
+        </Button>
+    );
+
+    const EditButton = (
+        <Button asChild size='icon' variant='outline'>
+            <Link
+                prefetch
+                href={ticketEditPath(ticket.id)}
+                className='text-sm underline'
+            >
+                <LucidePencil className='w-4 h-4' />
             </Link>
         </Button>
     );
@@ -55,9 +75,15 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
                 </CardContent>
             </Card>
             {isDetail ? (
-                DeleteButton
+                <>
+                    {EditButton}
+                    {DeleteButton}
+                </>
             ) : (
-                <div className='flex flex-col gap-y-1'>{DetailButton}</div>
+                <div className='flex flex-col gap-y-1'>
+                    {DetailButton}
+                    {EditButton}
+                </div>
             )}
         </div>
     );
