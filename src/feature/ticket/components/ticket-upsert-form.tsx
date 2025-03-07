@@ -13,9 +13,9 @@ type TicketUpsertFormProps = {
 };
 
 const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
-    const [actionState, action] = useActionState(
+    const [_actionState, action] = useActionState(
         upsertTicket.bind(null, ticket?.id),
-        { message: '初始状态' }
+        { message: '' }
     );
 
     return (
@@ -35,7 +35,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
                 defaultValue={ticket?.content}
             ></Textarea>
             <SubmitButton label={ticket?.id ? 'Update' : 'Create'} />
-            {actionState.message}
+            {/* {actionState.message} */}
         </form>
     );
 };
