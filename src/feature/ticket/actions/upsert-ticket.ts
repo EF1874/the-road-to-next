@@ -1,12 +1,13 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
-import { ticketPath, ticketsPath } from '@/paths';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/prisma';
+import { ticketPath, ticketsPath } from '@/paths';
 
 export const upsertTicket = async (
     id: string | undefined,
+    _actionState: { message: string },
     formData: FormData
 ) => {
     const data = {
@@ -14,7 +15,7 @@ export const upsertTicket = async (
         content: formData.get('content') as string
     };
 
-    console.log('data:', data);
+    // console.log('data:', data);
     await prisma.ticket.upsert({
         where: {
             id: id ?? ''
@@ -27,4 +28,6 @@ export const upsertTicket = async (
     if (id) {
         redirect(ticketPath(id));
     }
+
+    return { message: `Ticket ${id ? 'updated' : 'created'}` };
 };

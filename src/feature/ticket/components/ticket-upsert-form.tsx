@@ -1,19 +1,25 @@
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { upsertTicket } from '../actions/upsert-ticket';
+'use client';
+
 import { Ticket } from '@prisma/client';
+import { useActionState } from 'react';
+import { SubmitButton } from '@/components/form/submit-button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { upsertTicket } from '../actions/upsert-ticket';
 
 type TicketUpsertFormProps = {
     ticket?: Ticket;
 };
+
 const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
+    const [actionState, action] = useActionState(
+        upsertTicket.bind(null, ticket?.id),
+        { message: '初始状态' }
+    );
+
     return (
-        <form
-            action={upsertTicket.bind(null, ticket?.id)}
-            className='flex flex-col gap-y-2'
-        >
+        <form action={action} className='flex flex-col gap-y-2'>
             <Input type='hidden' id='id' name='id' defaultValue={ticket?.id} />
             <Label htmlFor='title'>Title</Label>
             <Input
@@ -28,7 +34,8 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
                 name='content'
                 defaultValue={ticket?.content}
             ></Textarea>
-            <Button type='submit'>{ticket?.id ? 'Update' : 'Create'}</Button>
+            <SubmitButton label={ticket?.id ? 'Update' : 'Create'} />
+            {actionState.message}
         </form>
     );
 };

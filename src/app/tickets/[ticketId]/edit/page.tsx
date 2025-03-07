@@ -1,7 +1,7 @@
+import { notFound } from 'next/navigation';
 import { CardCompact } from '@/components/card-compact';
 import { TicketUpsertForm } from '@/feature/ticket/components/ticket-upsert-form';
 import { getTicket } from '@/feature/ticket/queries/get-ticket';
-import { notFound } from 'next/navigation';
 
 type TicketEditPageProps = {
     params: { ticketId: string };

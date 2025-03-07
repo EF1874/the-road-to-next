@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { CardCompact } from '@/components/card-compact';
 import { Heading } from '@/components/heading';
 import { Placeholder } from '@/components/placeholder';
 import { Spinner } from '@/components/spinner';
 import { TicketList } from '@/feature/ticket/components/ticket-list';
-import { CardCompact } from '@/components/card-compact';
 import { TicketUpsertForm } from '@/feature/ticket/components/ticket-upsert-form';
 
 // 强制页面为动态

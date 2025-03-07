@@ -1,12 +1,11 @@
+import { ReactNode } from 'react';
 import {
     Card,
-    CardHeader,
-    CardTitle,
-    CardDescription,
     CardContent,
-    CardFooter
-} from './ui/card';
-import { ReactNode } from 'react';
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle} from './ui/card';
 
 type CardCompactProps = {
     title: string;
