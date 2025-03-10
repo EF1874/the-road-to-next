@@ -1,3 +1,4 @@
+import { RedirectToast } from '@/components/redirect-toast';
 import { getTickets } from '../queries/get-tikets';
 import { TicketItem } from './ticket-item';
 
@@ -8,6 +9,8 @@ const TicketList = async () => {
             {tickets.map(ticket => (
                 <TicketItem key={ticket.id} ticket={ticket} />
             ))}
+
+            <RedirectToast />
         </div>
     );
 };
