@@ -74,17 +74,19 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
                     </span>
                 </CardContent>
             </Card>
-            {isDetail ? (
-                <>
-                    {EditButton}
-                    {DeleteButton}
-                </>
-            ) : (
-                <div className='flex flex-col gap-y-1'>
-                    {DetailButton}
-                    {EditButton}
-                </div>
-            )}
+            <div className='flex flex-col gap-y-1'>
+                {isDetail ? (
+                    <>
+                        {EditButton}
+                        {DeleteButton}
+                    </>
+                ) : (
+                    <>
+                        {DetailButton}
+                        {EditButton}
+                    </>
+                )}
+            </div>
         </div>
     );
 };
